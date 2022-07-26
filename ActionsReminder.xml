@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="91ecd9e5-6d48-43e0-b5a3-bd225b9b80fc" Name="小警察 by 哈利尔特" Enabled="true">
+    <Folders>
+      <Folder Id="399cc96f-077b-4307-adbf-0e74b92d6a57" Name="食物警察" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="进食效果出警" Id="3875960f-3472-46ce-bd46-9be5e335e423" RegularExpression="^.{30}::(?&lt;playername&gt;.*?)的“进食”状态效果消失了。">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="${playername}快给我吃食物" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="85c34d53-190f-4d7f-b50b-668976f5cc0d" Name="技能警察" Enabled="true">
+        <Folders>
+          <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="16777216" Id="69c3a60c-8dcf-437a-b6aa-1dd1f5b7b12e" Name="黑魔" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="暴雷DOT" Id="4f42773d-1927-4362-aedf-5c676b4544d6" RegularExpression="^.{28}1E:A3:暴雷:.{13}:(?&lt;name&gt;.+?):">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="暴雷消失啦" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4194304" Id="843e551a-bf7c-4017-ba41-591deb6fe3e7" Name="诗人" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="烈毒咬箭" Id="dc2b52b1-0bfb-46f1-9230-de4cb9a7a267" RegularExpression="^.{28}1E:4B0:烈毒咬箭:.{13}:(?&lt;name&gt;.+?):">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" TriggerId="bd39910a-212c-4082-a9e0-30d9d4fb16c0" TriggerForce="regexp,parent" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="狂风蚀箭" Id="a2846b41-1f2b-4c8b-aa8b-306ac164b07e" RegularExpression="^.{28}1E:4B1:狂风蚀箭:.{13}:(?&lt;name&gt;.+?):">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" TriggerId="bd39910a-212c-4082-a9e0-30d9d4fb16c0" TriggerForce="regexp,parent" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="提醒" Id="bd39910a-212c-4082-a9e0-30d9d4fb16c0" RegularExpression="">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="笨蛋诗人快续毒" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="8388608" Id="70602477-5536-47c1-8b4a-95739043fd89" Name="白魔" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="天辉" Id="c227bd02-c5e4-4db1-955d-2ea8d5e393a3" RegularExpression="^.{28}1E:74F:天辉:.{13}:(?&lt;name&gt;.+?):">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="断天辉啦" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="134217728" Id="1349b60c-6cca-4a04-aa4a-469f50a7208a" Name="学者" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="蛊毒法" Id="0a51efe3-e48c-4350-9dce-3e746e4f7ee2" RegularExpression="^.{28}1E:767:蛊毒法:.{13}:(?&lt;name&gt;.+?):">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="蛊毒法没啦" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers />
+      </Folder>
+    </Folders>
+    <Triggers />
+  </ExportedFolder>
+</TriggernometryExport>

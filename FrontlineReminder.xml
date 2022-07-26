@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="074a4a1c-76f7-44ce-bf52-4a6d7e444527" Name="战场实用提醒 by 哈利尔特" Enabled="true">
+    <Folders>
+      <Folder Id="738489da-6839-4235-9dc4-ddb4fd1a270b" Name="击杀" Enabled="true">
+        <Folders>
+          <Folder Id="58d349ef-a235-4a43-80e5-dd5400473778" Name="击杀亲友" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="隔壁队友击杀亲友" Id="1cef4992-a995-4c83-83c4-f6cce61a1659" RegularExpression="^.{25}:1B3A::(?&lt;playername1&gt;.*?)将(?&lt;playername2&gt;.*?)打倒了。">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="击杀目标对象${playername2}" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${playername2}" ExpressionTypeL="String" ExpressionR="(亲友名1|亲友名2).*" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="小队队友击杀亲友" Id="2588e7f3-6afa-43e0-a120-54c279ccd1e7" RegularExpression="^.{25}:133A::(?&lt;playername1&gt;.*?)将(?&lt;playername2&gt;.*?)打倒了。">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="击杀目标对象${playername2}" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${playername2}" ExpressionTypeL="String" ExpressionR="(亲友名1|亲友名2).*" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="自己被亲友击杀" Id="98fbd884-2031-4c84-82e9-f9566ed04168" RegularExpression="^.{25}:0A3A::(?&lt;playername1&gt;.*?)被(?&lt;playername2&gt;.*?)打倒了。">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="被目标对象${playername2}击杀" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${playername2}" ExpressionTypeL="String" ExpressionR="(亲友名1|亲友名2).*" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="自己击杀亲友" Id="add8740a-db0b-4d37-ae59-aa14139d6652" RegularExpression="^.{25}:0B3A::(?&lt;playername1&gt;.*?)将(?&lt;playername2&gt;.*?)打倒了。">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="击杀目标对象${playername2}" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${playername2}" ExpressionTypeL="String" ExpressionR="(亲友名1|亲友名2).*" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers>
+          <Trigger Enabled="true" Name="神典石查看击杀数" Id="69911e7d-ed36-405b-87fa-7c88e3e2fcac" RegularExpression="^.{25}:001D:(?&lt;playername1&gt;.*?):(?&lt;playername2&gt;.*?)开始欣赏神典石。">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="当前击杀数${var:frontline_killno}" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${var:frontline_in}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${playername1}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="击杀数统计" Id="26c32274-61f2-4958-8d59-8bf5c4ff2c4b" RegularExpression="^.{25}:0B3A::(?&lt;playername1&gt;.*?)将(?&lt;playername2&gt;.*?)打倒了。">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="frontline_killno" VariableExpression="${var:frontline_killno} + 1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" UseTTSTextExpression="${var:frontline_killno}击倒" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS" ExecutionDelayExpression="500">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${var:frontline_in}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="f916c8db-2c44-47c6-871d-c4ff08c9122b" Name="初始化" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="初始化" Id="40f60732-4402-4150-b6ea-b7296e396d7b" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="frontline_.+" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="frontline_killno" VariableExpression="0" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" ExecutionDelayExpression="100">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="离开战场" Id="b5628ce7-4244-40d7-9a98-5f4d5ef5a26b" RegularExpression="进入了休息区。">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="40f60732-4402-4150-b6ea-b7296e396d7b" TriggerForce="regexp,parent" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="frontline_in" VariableExpression="0" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" ExecutionDelayExpression="500">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="进入战场" Id="b45b6afb-e3df-4210-a4f3-dc14d1c99cba" RegularExpression="^.{30}::以(?&lt;companyname&gt;.*?)的身份参加了纷争前线！">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="40f60732-4402-4150-b6ea-b7296e396d7b" TriggerForce="regexp,parent" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="frontline_in" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" ExecutionDelayExpression="500">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers />
+  </ExportedFolder>
+</TriggernometryExport>
