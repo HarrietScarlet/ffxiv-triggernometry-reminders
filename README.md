@@ -3,3 +3,6 @@
 
 使用说明请见
 https://github.com/HarrietScarlet/ffxiv-triggernometry-reminders/wiki
+
+FAQ
+https://github.com/HarrietScarlet/ffxiv-triggernometry-reminders/wiki#faq
