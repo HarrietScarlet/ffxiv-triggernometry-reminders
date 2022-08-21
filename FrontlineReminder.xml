@@ -14,7 +14,7 @@
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${playername2}" ExpressionTypeL="String" ExpressionR="(亲友名1|亲友名2).*" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${playername2}" ExpressionTypeL="String" ExpressionR="(勇者阿九|幽霊夜行船).*" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
               </Trigger>
               <Trigger Enabled="true" Name="小队队友击杀亲友" Id="2588e7f3-6afa-43e0-a120-54c279ccd1e7" RegularExpression="^.{25}:133A::(?&lt;playername1&gt;.*?)将(?&lt;playername2&gt;.*?)打倒了。">
@@ -24,7 +24,7 @@
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${playername2}" ExpressionTypeL="String" ExpressionR="(亲友名1|亲友名2).*" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${playername2}" ExpressionTypeL="String" ExpressionR="(勇者阿九|幽霊夜行船).*" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
               </Trigger>
               <Trigger Enabled="true" Name="自己被亲友击杀" Id="98fbd884-2031-4c84-82e9-f9566ed04168" RegularExpression="^.{25}:0A3A::(?&lt;playername1&gt;.*?)被(?&lt;playername2&gt;.*?)打倒了。">
@@ -44,7 +44,7 @@
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${playername2}" ExpressionTypeL="String" ExpressionR="(亲友名1|亲友名2).*" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${playername2}" ExpressionTypeL="String" ExpressionR="(勇者阿九|幽霊夜行船).*" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
               </Trigger>
             </Triggers>

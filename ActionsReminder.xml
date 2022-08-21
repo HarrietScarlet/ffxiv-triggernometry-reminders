@@ -33,11 +33,123 @@
             </Triggers>
           </Folder>
           <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4194304" Id="843e551a-bf7c-4017-ba41-591deb6fe3e7" Name="诗人" Enabled="true">
-            <Folders />
+            <Folders>
+              <Folder Id="707c2b80-7fd3-4c15-bc23-e9bc2724410b" Name="续歌提醒" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Name="断贤者" Id="7d4a4876-6c37-4e35-8fb2-0d2e708af1b1" RegularExpression="^.{28}1E:8A9:贤者的叙事谣:.{13}:(?&lt;name&gt;.+?):">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_mage_started" VariableExpression="0" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" OBSEndPoint="" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" TriggerId="6000ee59-f464-4ee6-9168-751abc05584a" TriggerForce="regexp,parent" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="提前2秒续贤者提醒" Id="fbfdc4a6-af7e-4d29-9be4-7235f987e223" RegularExpression="^.{25}1A:8A9:贤者的叙事谣:5.{12}:(?&lt;name&gt;.+?):" PrevActions="Interrupt">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_mage_started" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" UseTTSTextExpression="快续歌" VariableOp="SetNumeric" VariableName="dia_remind" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS" ExecutionDelayExpression="32000">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:dot_mage_started}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="断放浪神" Id="fdb3be0c-0887-480c-8448-60f888eef7fc" RegularExpression="^.{28}1E:8A8:放浪神的小步舞曲:.{13}:(?&lt;name&gt;.+?):">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_wanderer_started" VariableExpression="0" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" OBSEndPoint="" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" TriggerId="6000ee59-f464-4ee6-9168-751abc05584a" TriggerForce="regexp,parent" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="断军神" Id="32397857-bb24-4629-8211-377f6f3fb9d3" RegularExpression="^.{28}1E:8AA:军神的赞美歌:.{13}:(?&lt;name&gt;.+?):">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_army_started" VariableExpression="0" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" OBSEndPoint="" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" TriggerId="6000ee59-f464-4ee6-9168-751abc05584a" TriggerForce="regexp,parent" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="断歌提示播报" Id="6000ee59-f464-4ee6-9168-751abc05584a" RegularExpression="">
+                    <Actions>
+                      <Action OrderNumber="1" OBSEndPoint="" UseTTSTextExpression="笨蛋诗人歌都断啦" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:dot_army_started}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:dot_wanderer_started}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:dot_mage_started}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="提前2秒续军神提醒" Id="561fa4d9-d317-4026-9311-0887000cdc58" RegularExpression="^.{25}1A:8AA:军神的赞美歌:5.{12}:(?&lt;name&gt;.+?):" PrevActions="Interrupt">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_army_started" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" UseTTSTextExpression="快续歌" VariableOp="SetNumeric" VariableName="dia_remind" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS" ExecutionDelayExpression="41000">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:dot_army_started}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="提前2秒续放浪神提醒" Id="f95c990f-34d8-4670-998b-8be2ac4d9513" RegularExpression="^.{25}1A:8A8:放浪神的小步舞曲:5.{12}:(?&lt;name&gt;.+?):" PrevActions="Interrupt">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_wanderer_started" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" UseTTSTextExpression="快续歌" VariableOp="SetNumeric" VariableName="dia_remind" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS" ExecutionDelayExpression="41000">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:dot_wanderer_started}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                </Triggers>
+              </Folder>
+            </Folders>
             <Triggers>
-              <Trigger Enabled="true" Name="烈毒咬箭" Id="dc2b52b1-0bfb-46f1-9230-de4cb9a7a267" RegularExpression="^.{28}1E:4B0:烈毒咬箭:.{13}:(?&lt;name&gt;.+?):">
+              <Trigger Enabled="true" Name="断烈毒咬箭" Id="dc2b52b1-0bfb-46f1-9230-de4cb9a7a267" RegularExpression="^.{28}1E:4B0:烈毒咬箭:.{13}:(?&lt;name&gt;.+?):">
                 <Actions>
-                  <Action OrderNumber="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" TriggerId="bd39910a-212c-4082-a9e0-30d9d4fb16c0" TriggerForce="regexp,parent" ActionType="Trigger">
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_causticbite_started" VariableExpression="0" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" UseTTSTextExpression="笨蛋诗人毒断啦" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" TriggerId="bd39910a-212c-4082-a9e0-30d9d4fb16c0" TriggerForce="regexp,parent" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                 </Actions>
@@ -45,9 +157,12 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="狂风蚀箭" Id="a2846b41-1f2b-4c8b-aa8b-306ac164b07e" RegularExpression="^.{28}1E:4B1:狂风蚀箭:.{13}:(?&lt;name&gt;.+?):">
+              <Trigger Enabled="true" Name="断狂风蚀箭" Id="a2846b41-1f2b-4c8b-aa8b-306ac164b07e" RegularExpression="^.{28}1E:4B1:狂风蚀箭:.{13}:(?&lt;name&gt;.+?):">
                 <Actions>
-                  <Action OrderNumber="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" TriggerId="bd39910a-212c-4082-a9e0-30d9d4fb16c0" TriggerForce="regexp,parent" ActionType="Trigger">
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_stormbite_started" VariableExpression="0" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" UseTTSTextExpression="笨蛋诗人毒断啦" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" TriggerId="bd39910a-212c-4082-a9e0-30d9d4fb16c0" TriggerForce="regexp,parent" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                 </Actions>
@@ -55,22 +170,62 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="提醒" Id="bd39910a-212c-4082-a9e0-30d9d4fb16c0" RegularExpression="">
+              <Trigger Enabled="true" Name="续烈毒咬箭提醒" Id="fbced49b-9328-4ea4-b3dd-23b013e3ba7c" RegularExpression="^.{25}1A:4B0:烈毒咬箭:.{14}:(?&lt;name&gt;.+?):" PrevActions="Interrupt">
                 <Actions>
-                  <Action OrderNumber="1" UseTTSTextExpression="笨蛋诗人快续毒" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_causticbite_started" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
+                  <Action OrderNumber="2" UseTTSTextExpression="快续毒" VariableOp="SetNumeric" VariableName="dia_remind" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS" ExecutionDelayExpression="39000">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:dot_causticbite_started}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
                 </Actions>
-                <Condition Enabled="false" Grouping="Or" />
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="续狂风蚀箭提醒" Id="d2095e78-b52f-4c8f-9cfa-f27a85a81fa3" RegularExpression="^.{25}1A:4B1:狂风蚀箭:.{14}:(?&lt;name&gt;.+?):" PrevActions="Interrupt">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_stormbite_started" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" UseTTSTextExpression="快续毒" VariableOp="SetNumeric" VariableName="dia_remind" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS" ExecutionDelayExpression="39000">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:dot_stormbite_started}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                </Condition>
               </Trigger>
             </Triggers>
           </Folder>
           <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="8388608" Id="70602477-5536-47c1-8b4a-95739043fd89" Name="白魔" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="天辉" Id="c227bd02-c5e4-4db1-955d-2ea8d5e393a3" RegularExpression="^.{28}1E:74F:天辉:.{13}:(?&lt;name&gt;.+?):">
+              <Trigger Enabled="true" Name="续天辉提醒" Id="c227bd02-c5e4-4db1-955d-2ea8d5e393a3" RegularExpression="^.{25}1A:74F:天辉:.{14}:(?&lt;name&gt;.+?):" PrevActions="Interrupt">
                 <Actions>
-                  <Action OrderNumber="1" UseTTSTextExpression="断天辉啦" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_dia_started" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" UseTTSTextExpression="快要断天辉惹" VariableOp="SetNumeric" VariableName="dia_remind" VariableExpression="1" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS" ExecutionDelayExpression="27000">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:dot_dia_started}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="断天辉" Id="0e865ae4-6202-4d2e-98c0-e48a52cf88e2" RegularExpression="^.{28}1E:74F:天辉:.{13}:(?&lt;name&gt;.+?):">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="dot_dia_started" VariableExpression="0" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" UseTTSTextExpression="断天辉啦" TextAuraFontSize="8" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                 </Actions>
@@ -97,6 +252,73 @@
           </Folder>
         </Folders>
         <Triggers />
+      </Folder>
+      <Folder Id="b8ad8dc2-c440-45b8-9b5c-5908c0423a77" Name="重置" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="死亡" Id="f509015b-f7c9-49a0-bb77-65d9cb7c4351" RegularExpression="^.{15}Death 19.{10}(?&lt;name&gt;.+?):">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f725ca42-85e2-4eeb-8ac1-e73ec0062673" TriggerForce="regexp,parent" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="切职业" Id="155a4a20-d3d1-40e7-82ea-339c4c145ac9" RegularExpression="^.{32}(?&lt;name&gt;.+?)的职业转换成了">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f725ca42-85e2-4eeb-8ac1-e73ec0062673" TriggerForce="regexp,parent" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="进本" Id="9b969c17-fe01-4111-bdc9-e5e43abd805c" RegularExpression="任务开始">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f725ca42-85e2-4eeb-8ac1-e73ec0062673" TriggerForce="regexp,parent" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="团灭" Id="447216cb-8153-40b5-a4a2-17b042d597ab" RegularExpression="^.{14} (?:\w+ |)21:.{8}:4000001[026]" PeriodRefire="Deny" RefirePeriodExpression="5000">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f725ca42-85e2-4eeb-8ac1-e73ec0062673" TriggerForce="regexp,parent" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="重置" Id="f725ca42-85e2-4eeb-8ac1-e73ec0062673" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="561fa4d9-d317-4026-9311-0887000cdc58" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="f95c990f-34d8-4670-998b-8be2ac4d9513" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="fbfdc4a6-af7e-4d29-9be4-7235f987e223" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="d2095e78-b52f-4c8f-9cfa-f27a85a81fa3" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="fbced49b-9328-4ea4-b3dd-23b013e3ba7c" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c227bd02-c5e4-4db1-955d-2ea8d5e393a3" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="7" VariableOp="UnsetRegex" VariableName="dot_.+" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
       </Folder>
     </Folders>
     <Triggers />
